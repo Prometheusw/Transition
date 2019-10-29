@@ -1,0 +1,26 @@
+#include "Can_Dri.h"
+
+/*×ª¹ìÆ÷ËÙ¶È*/
+enum _TranferSpeed
+{
+ TranferStop,
+ TranferSpeedOne,
+ TranferSpeedTwo,
+  TranferSpeedThree,
+ TranferSpeedFour,
+};
+
+
+void SendTransStatistics(CAN_DATA_FRAME *tempNode);
+void UpdataNowLoction(void);
+void SendTransStatus(CAN_DATA_FRAME *CopyTempNode);
+void SendTransConfig(CAN_DATA_FRAME *tempNode);
+u32 ReadMemeryData(u32  Add);
+void WriteMemeryData(u32 Add,u32 data);
+void SendDeviceOnlyID(CAN_DATA_FRAME *tempNode);
+void SetCANIDByARMID(CAN_DATA_FRAME *tempNode);
+void SentCANCommitMode(CAN_DATA_FRAME *tempNode);
+void SetCANCommitMode(CAN_DATA_FRAME *tempNode);
+void SentControlConfig(CAN_DATA_FRAME *tempNode);
+
+

@@ -1,0 +1,207 @@
+#include "sys.h"
+#include "delay.h"
+#include "usart.h"
+#include "led.h"
+#include "key.h"
+#include "includes.h"
+#include "TASK_config.h"
+#include "can.h"
+#include "exti.h"
+int main(void)
+{
+    delay_init(168);		  //初始化延时函数
+    LED_Init();		        //初始化LED端口
+    KEY_Init();
+    EXTIX_Init();
+    CAN1_Mode_Init(CAN_SJW_1tq,CAN_BS2_6tq,CAN_BS1_7tq,6,CAN_Mode_LoopBack);//CAN初始化环回模式,波特率500Kbps
+    OSInit();
+    OSTaskCreate(start_task,(void *)0,(OS_STK *)&START_TASK_STK[START_STK_SIZE-1],START_TASK_PRIO );//创建起始任务
+    OSStart();
+}
+/*******************************************************************************
+** 函数名称: start_task
+** 功能描述: 开始任务 创建其他任务
+** 参数说明: pdata: [输入/出]
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29
+********************************************************************************/
+void start_task(void *pdata)
+{
+    //OS_CPU_SR cpu_sr=0;
+    pdata = pdata;
+    sem_key=OSSemCreate(0);
+    sem_led=OSSemCreate(0);
+    can1Mbox=OSMboxCreate(0);
+
+    box_can=OSMboxCreate((void*)0);
+    //OS_ENTER_CRITICAL();			//进入临界区(无法被中断打断)
+    OSTaskCreate(Add_task,(void *)0,(OS_STK*)&Add_TASK_STK[Add_STK_SIZE],Add_TASK_PRIO);
+    //OSTaskCreate(key_task,(void *)0,(OS_STK*)&KEY_TASK_STK[KEY_STK_SIZE-1],KEY_TASK_PRIO);
+    OSTaskCreate(led0_task,(void *)0,(OS_STK*)&LED0_TASK_STK[LED0_STK_SIZE-1],LED0_TASK_PRIO);
+    OSTaskCreate(led1_task,(void *)0,(OS_STK*)&LED1_TASK_STK[LED1_STK_SIZE-1],LED1_TASK_PRIO);
+    OSTaskCreate(CANsend_task,(void *)0,(OS_STK*)&CANsend_TASK_STK[CANsend_STK_SIZE],CANsend_TASK_PRIO);
+    OSTaskDel(OS_PRIO_SELF);//删除自己 开始任务仅仅作用于创建其他任务和初始化
+    //OSTaskSuspend(START_TASK_PRIO);	//挂起起始任务.
+    //OS_EXIT_CRITICAL();				//退出临界区(可以被中断打断)
+}
+
+/*******************************************************************************
+** 函数名称: key_task
+** 功能描述: 按键扫描任务，判断按键值post信号量
+** 参数说明: pdata: [输入/出]
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29 按键扫描任务由中断服务函数替代
+********************************************************************************/
+//void key_task(void *pdata)
+//{
+//    INT8U key;
+//    pdata=pdata;
+//    while(1)
+//    {
+//        key=KEY_Scan(0);//PE4
+//        if(1==key)
+//            OSSemPost(sem_key);
+//        delay_ms(10);
+//    }
+//}
+/*******************************************************************************
+** 函数名称: led0_task
+** 功能描述: 闪烁 当任务开始调度时说明系统正常 指示系统正常运行
+** 参数说明: pdata: [输入/出]
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29
+********************************************************************************/
+void led0_task(void *pdata)
+{
+    INT8U t;
+    while(1)
+    {
+        t++;
+        delay_ms(10);
+        if(t==8)LED0=1;	//LED0灭
+        if(t==100)		//LED0亮
+        {
+            t=0;
+            LED0=0;
+        }
+    }
+}
+
+/*******************************************************************************
+** 函数名称: CANsend_task
+** 功能描述: CAN撒送任务，接收从Add任务的box-can消息邮箱并且发送 且post信号量sem-led
+** 参数说明: pdata: [输入/出]
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29
+********************************************************************************/
+void CANsend_task(void *pdata)
+{
+    INT8U err;
+    INT8U *point;
+    pdata=pdata;
+    while(1)
+    {
+        //INT8U flag=1;
+        point=(INT8U*)OSMboxPend(box_can,0,&err);//获得消息邮箱的指针
+        //flag=CAN1_Send_Msg(point,8);
+        CAN1_Send_Msg(point,8);
+        OSSemPost(sem_led);
+        /*此处采用创建任务的方式会引起邮箱中的数据出错，改用信号量后正常20190420*/
+//        if(0==flag)
+//            OSTaskCreate(led1_task,(void *)0,(OS_STK*)&LED1_TASK_STK[LED1_STK_SIZE-1],LED1_TASK_PRIO);
+    }
+}
+/*******************************************************************************
+** 函数名称: led1_task
+** 功能描述: 指示can发送状态的任务，当can发送成功后，pend信号量sem-led（can发送任务中），灯闪烁一下
+** 参数说明: pdata: [输入/出]
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29
+********************************************************************************/
+void led1_task(void *pdata)
+{
+    INT8U err;
+    while(1)
+    {
+        OSSemPend(sem_led,0,&err);
+        LED1=0;
+        delay_ostimedly(5);
+        LED1=1;
+        //OSTaskDel(OS_PRIO_SELF);
+    }
+}
+
+
+/*******************************************************************************
+** 函数名称: Add_task
+** 功能描述: pend信号量sem-key后，将message的所有元素加一，通过box-can消息邮箱发送
+** 参数说明: pdata: [输入/出]
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29
+********************************************************************************/
+void Add_task(void *pdata)
+{
+    INT8U err;
+    INT8U i;
+    INT8U message[8]= {0,1,2,3,4,5,6,7};
+    pdata=pdata;
+    while(1)
+    {
+        OSSemPend(sem_key,0,&err);
+        for(i=0; i<8; i++)
+        {
+            message[i]++;
+        }
+
+        OSMboxPost(box_can,&message);
+    }
+}
+
+/*******************************************************************************
+** 函数名称: EXTI4_IRQHandler
+** 功能描述: 中断服务函数 外部中断4 在其中发送信号量 代替原来的key任务
+** 参数说明: None
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-29
+********************************************************************************/
+void EXTI4_IRQHandler(void)
+{
+    OSIntEnter();
+    EXTI_ClearITPendingBit(EXTI_Line4);//清除LINE4上的中断标志位
+    OSSemPost(sem_key);
+    OSIntExit();
+}
+
+/*******************************************************************************
+** 函数名称: CAN1_RX0_IRQHandler
+** 功能描述: can接收中断 中断中接收到can数据帧 提取其中的DATA
+** 参数说明: None
+** 返回说明: None
+** 创建人员: 王凯
+** 创建日期: 2019-04-30
+********************************************************************************/
+void CAN1_RX0_IRQHandler(void)
+{
+	    OSIntEnter();
+
+  	CanRxMsg RxMessage;
+
+	int i=0;
+    CAN_Receive(CAN1, 0, &RxMessage);
+	 for(i=0;i<RxMessage.DLC;i++)
+	{
+			printf("rxbufk[%d]:%d\r\n",i,RxMessage.Data[i]);//成功实现  进入接收中断  读取数据
+
+    canbuf[i]=RxMessage.Data[i];  
+		
+}
+	    OSIntExit();
+
+}

@@ -1,0 +1,281 @@
+/********************************Copyright (c)**********************************\
+**                   (c) Copyright 2019, Main, China
+**                           All Rights Reserved
+**                           By(达实久信医疗科技有限公司)
+**----------------------------------文件信息------------------------------------
+** 文件名称: myconfig.h
+** 创建人员: 王凯
+** 创建日期: 2019-06-21
+** 文档描述: 所有关于任务的配置，结构体的定义，所有在其他文件的全局变量都在这里进行外部变量声明
+*******************************End of Head************************************/
+#include "sys.h"
+#include "delay.h"
+#include "usart.h"
+#include "Led_Dri.h"
+#include "Beep_Dri.h"
+#include "includes.h"
+#include "Can_Dri.h"
+#include "StepMotor_Dir.h"
+#include "malloc.h"	
+#include "W25QXX_Dir.h" 
+#include "TrackMission_Dri.h"
+#include "TransitionFunction.h"
+#include "Uart_Drv.h"
+#include "Timer_Dri.h"
+
+
+#include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+extern u32 sn0;//ARM Only One ID
+extern u16 ThisTransitionNumber;//本设备设备号
+
+extern void * TransLocationQeutb[10];//定义轨道定位消息队列
+
+extern T_CAN_Communicat_Mode CANCommunicatMode;
+
+#define FLASH_SECTOR_SIZE           4*1024//定义一个扇区的大小4k
+#define  MAX_READ_TIME          3//定义重复读取次数
+/*定义设备地址*/
+//#define ThisTransitionNumber  0x01//当前转轨器地址/CANID 
+/*定义CAN的通讯模式*/
+typedef struct _CANCOMMOD{
+	union
+	{
+		u8 CanModeMask;
+	struct 
+	{
+	u8 HeartBeatSendbit:1,
+	ACKFrameSendbit:1,
+	ReplyFrameSendbit:1,
+	ACTFrameSendbit:1,
+	
+	HeartBeatRecebit:1,
+	ACKFrameRecebit:1,
+	ReplyFrameRecebit:1,
+	ACTFrameRecebit:1;	
+	}CanModebit;
+	}CanMode;
+}T_CAN_Communicat_Mode;
+/*定义控制器信息数据结构*/
+typedef struct _CONTROLMESS{
+     char	ProductSeries;
+	   u32  HardwareVersion;
+	   u32  SoftwareVersion;
+	   u32  ARMOnlyOneId;
+	   u32  ManufactureData;
+	   u32  UseData;
+}T_Control_Message;
+
+/*定义主索引*/
+enum _MAININDEX{
+	StateQuery=0x00,//状态查询类
+	StateSet,//状态设置类
+	MechanicalAct,//机械动作类
+};
+/*定义子索引*/
+enum _SUBINDEX{
+	GetUniqueID=0x16,//获取唯一编号
+	SetCANID=0x17,//根据唯一编号设置设备ID（CANid)
+	GetCanComMod=0x18,//获取CAN通讯模式
+	SetCanComMod=0x19,//设置CAN通讯模式
+	SetRestart=0x32,//域控制重新启动
+	ControlCheck=0x34,//控制器自检
+	
+};
+/*定义单字节索引信息*/
+enum _INDEX{
+ UploadTransStatus=0x00,//上传转轨器状态，由自身变化引起
+ GetTransStatus,//获取转轨器状态
+ ResetTransStatus,//重置转轨器状态
+ GetTransConfig,     //获取转轨器配置
+ SetTransConfig,     //设置转轨器配置
+ GetTransStatistics,  //获取统计数据
+ TransLocation=0x10,//转轨器定位
+ TransFindzero,     //转轨器校零
+ TransMove,           //转轨器移动
+ CurrentPreset,       //设置当前位为预置位
+ LoadTransParameters, //装载转轨器参数
+ SaveTransParameters, //保存转轨器参数
+
+
+ CarApplyPass,        //小车申请通过
+ CarCanPass,          //转轨器通知小车可以通过
+ CarAlreadyPass,      //小车通知已经通过
+
+ CarApplyChange=0x32,//小车申请转轨
+ CarCanUpTrack,       //转轨器通知小车可以驶入（上轨）
+ CarAlreadyUpTrack,   //小车通知已经驶入
+ CarCanDownTrack,     //转轨器通知小车可以行驶出(xiagui)
+ CarAlreadyDownTrack, //小车通知已经行驶出，通知转轨器释放
+ TranPerMission=0xfe,
+ ReStart=0xff,//软件复位
+};
+
+
+
+/*定义工作模式*/
+#define OperatingMode       1//自动运行模式
+#define DebugMode           0
+
+/*定义轨道号*/
+#define Track0            0
+#define Track1            1
+#define Track2            2
+#define Track3            3
+#define Track4            4
+
+/*定义是和 否*/
+#define T_Yes             1
+#define T_No              0
+
+/*定义轨道锁定*/
+#define  T_Lock           1
+#define  T_Unlock         0
+
+/*定义故障代码*/
+#define No_Err            0x00//无故障
+#define Comexefailed      0x35//命令通信成功，但是执行失败
+#define RAMSpillover      0x03//内存溢出，内存分配不成功
+/*转轨器状态结构*/
+typedef struct Status{
+   INT8U DeviceMode;//工作模式
+	 INT8U WarningCode;//警告代码
+	 INT8U ErrorCode;//故障代码
+	 INT8U DockedNumber;//正好对接的轨道编号
+	 INT8U NowLoction;//目前的位置//在（前四位）和（后四位）之间
+	union 
+	{
+	INT8U TrackStatus;
+		struct
+		{
+	INT8U FindzeroValid:1,/*校零开关是否有效*/
+	      ExeCommands:1,/*是否正在执行命令*/
+	      TrackUse0:1,/*转轨器轨道1有车通过*/
+	      TrackUse1:1,/*转轨器轨道2有车通过*/
+	      TrackUse2:1,/*转轨器轨道3有车通过*/
+	      TrackUse3:1,/*转轨器轨道4有车通过*/
+	      Monopolize:1;/*转轨器独享*/
+		}Usebit;
+		
+	}TrackUse;
+	INT16U EncoderCount;//步进编码器计数	
+} T_Trans_Status;
+
+/*转轨器统计数据结构*/
+typedef struct _Statistics{
+		INT32U WarningTimes;//警告次数
+		INT32U ErrTimes;//故障次数
+	  INT32U CommWarning;//通讯警告次数
+	  INT32U CommErr;//通讯故障次数
+	  INT32U FindzeroTimes;//校零次数
+	  INT32U MoveTimes;//移动次数
+	  INT32U PassTimes;//通过次数
+	  INT32U ShuntTimes;//调车次数
+}T_Trans_Statistics;
+
+/*转轨器配置结构*/
+//typedef struct TransConfig{
+//		INT16U Track0Count;//活轨对准轨道0时码数
+//		INT16U Track1Count;//活轨对准轨道1时码数
+//		INT16U Track2Count;//活轨对准轨道2时码数
+//		INT16U Track3Count;//活轨对准轨道3时码数
+//	 	INT16U Track4Count;//活轨对准轨道4时码数
+//	  INT32U FindzeroSpeed;//次数
+//}T_Trans_Config;
+extern T_Trans_Statistics TransStatistics;//转轨器统计结构
+
+extern INT16U TrackCount[16];//转轨器配置结构
+extern INT8U W25QXXSendBuff[32];//W25QXX的发送缓存
+extern INT8U W25QXXReceiveBuff[32];//接收缓存
+
+extern INT8U   FindZeroGlob;
+
+extern OS_EVENT * TransLocationQeue;//轨道定位信号邮箱
+extern OS_EVENT * CarAlreadyPassSem;//小车已经通过信号量
+extern OS_EVENT * CarAlreadyUpSem;//小车已经上轨信号量
+extern OS_EVENT * CarAlreadyDownSem;//小车已经下轨道信号量
+extern OS_EVENT * TransFindzeroMbox;//轨道找零信邮箱
+
+/*外部变量 信号量信号邮箱在myconfig.c中定义*/
+extern OS_EVENT * can1Mbox;
+
+extern T_Trans_Status TransStatus;
+extern T_Trans_Status DefoultTransStatus;
+
+/************************************************************************************/
+/*与任务相关的四个个必要条件，优先级，堆栈大小，堆栈，任务函数声明*/
+/*1任务优先级设置*/
+#define START_TASK_PRIO      			4//开始任务 优先级最高
+#define CAN2_TASK_PRIO            5//can2分配任务，中断接受之后，在这个任务分配处理
+#define CAN2ACT_TASK_PRIO         7//can2主动帧处理任务，在can2处理任务之后
+#define STEPMOTOR_TASK_PRIO       15
+#define TRANSLOCATION_TASK_PRIO   8//轨道定位任务
+#define RUN_TASK_PRIO             19//指示系统是否正常运行函数。放在最低优先级
+#define LED_TASK_PRIO             18
+#define MISSIONANALYSE_PRIO       10//转轨器任务分析任务
+#define CARAPPLYPASS_PRIO         11//小车要通过转轨器任务
+#define CAN2Send_PRIO             14
+#define CARAPPLYCHANGE_PRIO       12//小车申请转换轨道任务
+#define FINDZERO_PRIO             9
+#define TRANSPERMI_PRIO           13
+
+#define HEARTBEAT_PRIO             16
+/*2定义任务堆栈大小*/
+#define START_STK_SIZE  				  128
+//#define RUN_STK_SIZE              128
+//#define CAN2_STK_SIZE             128
+//#define CAN2ACT_STK_SIZE          128
+//#define LED_STK_SIZE              128
+//#define STEPMOTOR_STK_SIZE        128
+//#define TRANSLOCATION_STK_SIZE    256
+//#define MISSIONANALYSE_STK_SIZE   256//转轨器任务分析任务
+//#define CARAPPLYPASS_STK_SIZE     256
+//#define CAN2Send_STK_SIZE         128
+//#define CARAPPLYCHANGE_STK_SIZE   256//小车申请转换轨道任务
+//#define FINDZERO_STK_SIZE         256
+//#define TRANSPERMI_STK_SIZE       128
+
+/*3定义任务堆栈外部变量 防止出现重复定义 新加时要在mycofig.c中添加*/
+extern OS_STK START_TASK_STK[START_STK_SIZE];
+//extern OS_STK RUN_TASK_STK[RUN_STK_SIZE];
+//extern OS_STK CAN2_TASK_STK[CAN2_STK_SIZE];
+//extern OS_STK CAN2ACT_TASK_STK[CAN2ACT_STK_SIZE];
+//extern OS_STK LED_TASK_STK[LED_STK_SIZE];
+//extern OS_STK STEPMOTOR_TASK_STK[STEPMOTOR_STK_SIZE];
+//extern OS_STK TRANSLOCATION_TASK_STK[TRANSLOCATION_STK_SIZE];
+//extern OS_STK MISSIONANALYSE_TASK_STK[MISSIONANALYSE_STK_SIZE];
+//extern OS_STK CARAPPLYPASS_TASK_STK[CARAPPLYPASS_STK_SIZE];
+//extern OS_STK CAN2Send_TASK_STK[CAN2Send_STK_SIZE];
+//extern OS_STK CARAPPLYCHANGE_TASK_STK[CARAPPLYCHANGE_STK_SIZE];
+//extern OS_STK FINDZERO_TASK_STK[FINDZERO_STK_SIZE];
+//extern OS_STK TRANSPERMI_TASK_STK[TRANSPERMI_STK_SIZE];	
+
+/*4任务函数声明*/
+void START_Task(void *pdata);
+void RUN_Task(void *pdata);
+void CAN2_Task(void *pdata);
+void CAN2_Act_Task(void *pdata);
+void LED_Task(void *pdata);
+void STEPMOTOR_Task(void *pdata);
+void TransLocation_TASK(void *pdata);
+void MissionAnalyse_Task(void *pdata);//转轨器机械任务分析函数
+void CarApplyPass_Task(void *pdata);
+void CAN2_Send_Task(void *pdata);
+void CarApplyPass_Task(void *pdata);
+void CarApplyChange_Task(void *pdata);
+void TransFindZero_Task(void *pdata);
+void TranPerMission_Task(void *pdata);
+void HEARBEAT_TASK(void *pdata);
+/********************************************************************************************/
+/*配置函数声明*/
+void HardwareInit(void);
+void ParameterInit(void);
+
+void EventCreate(void);
+void TaskCreate(void);
+void Index_Judegment(u8 canChan,u32 id,u8 index,CAN_DATA_FRAME * tempNode,CAN_DATA_FRAME *frameBuf);
+
+

@@ -1,0 +1,29 @@
+/********************************Copyright (c)**********************************\
+**                   (c) Copyright 2019, Main, China
+**                           All Rights Reserved
+**                           By(达实久信医疗科技有限公司)
+**----------------------------------文件信息------------------------------------
+** 文件名称: beep_Dri.c
+** 创建人员: 王凯
+** 创建日期: 2019-06-29
+** 文档描述: 
+*******************************End of Head************************************/
+#include "myconfig.h" 
+void Beep_Init(void)	
+{
+	GPIO_InitTypeDef  GPIO_InitStructure;
+
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+
+  //GPIOF8
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+  GPIO_Init(GPIOF, &GPIO_InitStructure);
+	GPIO_SetBits(GPIOF,GPIO_Pin_8);//叫
+
+}
+
+
