@@ -113,7 +113,7 @@ void TIM9_Cap_Init(u32 arr,u16 psc)
     NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;		//子优先级3
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
     NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器
-    TIM_Cmd(TIM9,ENABLE); //使能定时器9
+    TIM_Cmd(TIM9,DISABLE); //使能定时器9
 }
 /****************************************************************
 功能：定时器3捕获初始化    零点开关信号

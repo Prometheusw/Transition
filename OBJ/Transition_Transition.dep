@@ -1,5 +1,5 @@
 Dependencies for Project 'Transition', Target 'Transition': (DO NOT MODIFY !)
-F (..\DATA\GlobalData.c)(0x5DB6A0E4)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\globaldata.o --omf_browse ..\obj\globaldata.crf --depend ..\obj\globaldata.d)
+F (..\DATA\GlobalData.c)(0x5DB8270C)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\globaldata.o --omf_browse ..\obj\globaldata.crf --depend ..\obj\globaldata.d)
 I (..\USER\myconfig.h)(0x5D8AB70E)
 I (..\SYSTEM\sys\sys.h)(0x5710F460)
 I (..\USER\stm32f4xx.h)(0x5CC40CE8)
@@ -59,10 +59,10 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
-F (..\DATA\GlobalData.h)(0x5DB6A131)()
+F (..\DATA\GlobalData.h)(0x5DB8270C)()
 F (..\DATA\Macro.h)(0x5DB678A5)()
 F (..\DATA\Structure.h)(0x5DB1063C)()
 F (.\Application.c)(0x5D9064FE)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\application.o --omf_browse ..\obj\application.crf --depend ..\obj\application.d)
@@ -125,10 +125,10 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
-F (.\myconfig.c)(0x5DB6A0E4)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\myconfig.o --omf_browse ..\obj\myconfig.crf --depend ..\obj\myconfig.d)
+F (.\myconfig.c)(0x5DB82758)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\myconfig.o --omf_browse ..\obj\myconfig.crf --depend ..\obj\myconfig.d)
 I (myconfig.h)(0x5D8AB70E)
 I (..\SYSTEM\sys\sys.h)(0x5710F460)
 I (..\USER\stm32f4xx.h)(0x5CC40CE8)
@@ -188,7 +188,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (.\stm32f4xx_it.c)(0x5CC40AD0)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
@@ -324,7 +324,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\APPLICATION\CAN_APP\Can_App.c)(0x5D76EE34)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\can_app.o --omf_browse ..\obj\can_app.crf --depend ..\obj\can_app.d)
@@ -387,10 +387,10 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
-F (..\APPLICATION\LED_APP\Led_App.c)(0x5DB682D0)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\led_app.o --omf_browse ..\obj\led_app.crf --depend ..\obj\led_app.d)
+F (..\APPLICATION\LED_APP\Led_App.c)(0x5DB820C0)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\led_app.o --omf_browse ..\obj\led_app.crf --depend ..\obj\led_app.d)
 I (..\USER\myconfig.h)(0x5D8AB70E)
 I (..\SYSTEM\sys\sys.h)(0x5710F460)
 I (..\USER\stm32f4xx.h)(0x5CC40CE8)
@@ -450,7 +450,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\APPLICATION\STEPMOTOR_App\StepMotor_App.c)(0x5DAEB1AA)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stepmotor_app.o --omf_browse ..\obj\stepmotor_app.crf --depend ..\obj\stepmotor_app.d)
@@ -513,10 +513,10 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
-F (..\APPLICATION\TRACKMISSION_APP\TrackMission_APP.c)(0x5DB689DF)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\trackmission_app.o --omf_browse ..\obj\trackmission_app.crf --depend ..\obj\trackmission_app.d)
+F (..\APPLICATION\TRACKMISSION_APP\TrackMission_APP.c)(0x5DB82758)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\trackmission_app.o --omf_browse ..\obj\trackmission_app.crf --depend ..\obj\trackmission_app.d)
 I (..\USER\myconfig.h)(0x5D8AB70E)
 I (..\SYSTEM\sys\sys.h)(0x5710F460)
 I (..\USER\stm32f4xx.h)(0x5CC40CE8)
@@ -576,7 +576,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\APPLICATION\TIMER\Timer_APP.c)(0x5D7EE0E4)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\timer_app.o --omf_browse ..\obj\timer_app.crf --depend ..\obj\timer_app.d)
@@ -639,7 +639,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\APPLICATION\MODBUS_APP\ModBus_APP.c)(0x5D79E67E)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\modbus_app.o --omf_browse ..\obj\modbus_app.crf --depend ..\obj\modbus_app.d)
@@ -702,7 +702,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\APPLICATION\STATE_APP\State_APP.c)(0x5DAFAD42)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\state_app.o --omf_browse ..\obj\state_app.crf --depend ..\obj\state_app.d)
@@ -765,10 +765,10 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
-F (..\HARDWARE\TRACKMISSION\TrackMission_Dri.c)(0x5DB69A9C)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\trackmission_dri.o --omf_browse ..\obj\trackmission_dri.crf --depend ..\obj\trackmission_dri.d)
+F (..\HARDWARE\TRACKMISSION\TrackMission_Dri.c)(0x5DB8D6F1)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\trackmission_dri.o --omf_browse ..\obj\trackmission_dri.crf --depend ..\obj\trackmission_dri.d)
 I (..\USER\myconfig.h)(0x5D8AB70E)
 I (..\SYSTEM\sys\sys.h)(0x5710F460)
 I (..\USER\stm32f4xx.h)(0x5CC40CE8)
@@ -828,10 +828,10 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
-F (..\HARDWARE\STEPMOTOR\StepMotor_Dir.c)(0x5D8C5504)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stepmotor_dir.o --omf_browse ..\obj\stepmotor_dir.crf --depend ..\obj\stepmotor_dir.d)
+F (..\HARDWARE\STEPMOTOR\StepMotor_Dir.c)(0x5DB7D79E)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stepmotor_dir.o --omf_browse ..\obj\stepmotor_dir.crf --depend ..\obj\stepmotor_dir.d)
 I (..\USER\myconfig.h)(0x5D8AB70E)
 I (..\SYSTEM\sys\sys.h)(0x5710F460)
 I (..\USER\stm32f4xx.h)(0x5CC40CE8)
@@ -891,7 +891,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\CAN\Can_Dri.c)(0x5DB6A131)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\can_dri.o --omf_browse ..\obj\can_dri.crf --depend ..\obj\can_dri.d)
@@ -954,7 +954,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\BEEP\beep_Dri.c)(0x5D7F2C82)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\beep_dri.o --omf_browse ..\obj\beep_dri.crf --depend ..\obj\beep_dri.d)
@@ -1017,7 +1017,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\LED\Led_Dri.c)(0x5D76F79E)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\led_dri.o --omf_browse ..\obj\led_dri.crf --depend ..\obj\led_dri.d)
@@ -1080,7 +1080,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\WQ25XX\W25QXX_Dir.c)(0x5D200828)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\w25qxx_dir.o --omf_browse ..\obj\w25qxx_dir.crf --depend ..\obj\w25qxx_dir.d)
@@ -1143,7 +1143,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\MALLOC\malloc.c)(0x5CFF8D94)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\malloc.o --omf_browse ..\obj\malloc.crf --depend ..\obj\malloc.d)
@@ -1242,7 +1242,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\TIMER\Timer_Dri.c)(0x5D4A6E64)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\timer_dri.o --omf_browse ..\obj\timer_dri.crf --depend ..\obj\timer_dri.d)
@@ -1305,7 +1305,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\CRC\CRC.c)(0x5D423C04)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\crc.o --omf_browse ..\obj\crc.crf --depend ..\obj\crc.d)
@@ -1368,7 +1368,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\HARDWARE\Modbus\ModBus.c)(0x5DB69D8F)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\modbus.o --omf_browse ..\obj\modbus.crf --depend ..\obj\modbus.d)
@@ -1431,7 +1431,7 @@ I (..\HARDWARE\UART\Uart_Drv.h)(0x5D26E552)
 I (..\HARDWARE\TIMER\Timer_Dri.h)(0x5D423BBE)
 I (..\HARDWARE\CRC\crc.h)(0x5D2EF6BE)
 I (..\HARDWARE\Modbus\ModBus.h)(0x5D6DBEE2)
-I (..\DATA\GlobalData.h)(0x5DB6A131)
+I (..\DATA\GlobalData.h)(0x5DB8270C)
 I (..\DATA\Structure.h)(0x5DB1063C)
 I (..\DATA\Macro.h)(0x5DB678A5)
 F (..\SYSTEM\delay\delay.c)(0x5710F45E)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE -I ..\HARDWARE\CAN -I ..\HARDWARE\LED -I ..\HARDWARE\MALLOC -I ..\APPLICATION\CAN_APP -I ..\APPLICATION\LED_APP -I ..\HARDWARE\STEPMOTOR -I ..\HARDWARE\WQ25XX -I ..\HARDWARE\BEEP -I ..\HARDWARE\TRACKMISSION -I ..\HARDWARE\UART -I ..\APPLICATION\UART_APP -I ..\APPLICATION\MODBUS_APP -I ..\HARDWARE\TIMER -I ..\HARDWARE\CRC -I ..\HARDWARE\Modbus -I ..\DATA-I.\RTE\_Transition-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK\ARM\CMSIS\Include-ID:\MDK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)

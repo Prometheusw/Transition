@@ -19,17 +19,31 @@
 ********************************************************************************/
 void RUN_Task(void *pdata)
 {
-    pdata=pdata;
+  	pdata=pdata;
+	  u8 useage;
+	  u8 count=0;
     while(1)
     {
         GPIO_ResetBits(GPIOF,GPIO_Pin_9);
-        OSTimeDlyHMSM(0,0,0,400);
+        OSTimeDlyHMSM(0,0,0,500);
 //       UpdataNowLoction();
         GPIO_SetBits(GPIOF,GPIO_Pin_9);
-        OSTimeDlyHMSM(0,0,0,600);
-			  if(TransStatus.DeviceMode!=1)
-				{
-					printf("TransStatus.DeviceMode=%d\r\n",TransStatus.DeviceMode);
+        OSTimeDlyHMSM(0,0,0,800);
+			  useage=my_mem_perused(SRAMIN);
+			  count++;
+			if(count==9)
+					{
+					count=0;
+          printf("LastFramFlag%d;TransStatus.TrackUse.TrackStatus&0x3c=%d\r\n",LastFramFlag,TransStatus.TrackUse.TrackStatus&0x3c);
+					LastFramFlag=0;
+			  if(TransStatus.DeviceMode!=1||TransStatus.ErrorCode!=0||useage>1)
+					/*如果设备工作模式不为1或者错误代码不为无错误或者内存利用率不为1，打印*/
+				  {
+					
+					  printf("TransStatus.DeviceMode=%d;TransStatus.ErrorCode!=%d;内存使用=%d;\r\n",
+					  TransStatus.DeviceMode,TransStatus.ErrorCode,useage);
+						
+				  }
 				}
 //       UpdataNowLoction();
         Self_Function();//自运行

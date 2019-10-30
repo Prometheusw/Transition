@@ -93,11 +93,12 @@ void HardwareInit(void)
     W25QXX_Read(&ZeroDirction,FLASH_SECTOR_SIZE*2,sizeof(ZeroDirction));//获取找零方向
     W25QXX_Read(&ThisTransitionNumber,FLASH_SECTOR_SIZE*2+4,sizeof(ThisTransitionNumber));//获设备号
     Load_One_FindZero();//在任务列表里面加一个找零任务，做W为上电找零
-    delay_ms(800);
+    delay_ms(2000);
     TIM_ITConfig(TIM9,TIM_IT_CC1,ENABLE);//初始化时候关闭了报警信号的捕捉，在系统稳定之后，重新开启
+		TIM_Cmd(TIM9,ENABLE); //使能定时器9
     USART_Cmd(USART3, ENABLE);  //使能串口3
     BeepOFF;//软件初始化成功后停止鸣叫
-  	RTRbuf=(CAN_DATA_FRAME *)mymalloc(SRAMIN,sizeof(CAN_DATA_FRAME));
+  	RTRbuf=(CAN_DATA_FRAME *)mymalloc(SRAMIN,sizeof(CAN_DATA_FRAME));//收到的应答帧识别标识内存区
 		printf("初始化成功");
 }
 
@@ -422,16 +423,17 @@ void Index_Judegment(u8 canChan,u32 id,u8 index,CAN_DATA_FRAME * tempNode,CAN_DA
 					printf("\r\n<事务ID：%llu>（1/14）已经接收到 %d 号小车申请转轨帧，从%d号轨道到%d号轨道。\r\n",printfcount,
 					tempNode->id.idBit.sendDeviceId,
 					tempNode->canMsg.dataBuf[0],tempNode->canMsg.dataBuf[1]);
-					if(LastFramFlag != tempNode->id.idBit.sendDeviceId)
+					ACKSendFram(CAN2_CHANNEL,tempNode);//立刻回应，多主
+					printf("<事务ID：%llu>（2/14）已经对%d号小车申请转轨帧进行回应。\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+					if(LastFramFlag != tempNode->id.idBit.sendDeviceId)//为了防止出现连续多次当送通过转轨期指令
 					{
-						ACKSendFram(CAN2_CHANNEL,tempNode);//立刻回应，多主
             Apply_Change_Mission(tempNode);
-						printf("<事务ID：%llu>（2/14）已经对%d号小车申请转轨帧进行回应。\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 						LastFramFlag=tempNode->id.idBit.sendDeviceId;
+						printf("<事务ID：%llu>%d号小车申请转轨任务已经建立。\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 					}
 					else
 					{
-						printf("<事务ID：%llu>（ERR）收到%d号小车申请转轨帧，上了锁不进行回应。\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+						printf("<事务ID：%llu>（ERR）收到%d号小车申请转轨帧，任务重复。\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 					}
 						 
             //在这个函数里面，申请一块内存保存了tempnode的数据，执行完之后才会继续向下执行，所以不会出现覆盖执行的问题
@@ -442,10 +444,11 @@ void Index_Judegment(u8 canChan,u32 id,u8 index,CAN_DATA_FRAME * tempNode,CAN_DA
         {
 					u8 *carnum;
 					printf("<事务ID：%llu>（6/14）已经接收到 %d 号小车已经上轨帧，此时已经上轨道\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+					ACKSendFram(CAN2_CHANNEL,tempNode);//立刻回应，多主
+          printf("<事务ID：%llu>（7/14）已经对%d号小车已经上轨进行回应\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 					if((TransStatus.TrackUse.TrackStatus&0x3c)!=0x00&&alreadlyuptrack==0)//只有当轨道被上锁的时候才会出现已经上轨这种帧，避免出现已经上轨累计这种情况
 					{
-					  ACKSendFram(CAN2_CHANNEL,tempNode);//立刻回应，多主
-            printf("<事务ID：%llu>（7/14）已经对%d号小车已经上轨进行回应\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+					  printf("<事务ID：%llu>发送%d号小车已经上轨信号量\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 						alreadlyuptrack=1;
 					  carnum=(u8 *)mymalloc(SRAMIN,1);
 						*carnum=tempNode->id.idBit.sendDeviceId;
@@ -453,23 +456,25 @@ void Index_Judegment(u8 canChan,u32 id,u8 index,CAN_DATA_FRAME * tempNode,CAN_DA
 					}
 					else
 					{
-						printf("<事务ID：%llu>（ERR）收到%d号小车已经上轨帧，但不进行回应\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+						printf("<事务ID：%llu>（ERR）收到%d号小车已经上轨帧，不发送信号量\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 					}
         }
         break;
 
         case CarAlreadyDownTrack://小车已经下轨道14
         {
-					printf("<事务ID：%llu>（12/14）已经接收到 %d 号小车已经下轨帧，下轨道",printfcount,tempNode->id.idBit.sendDeviceId	);
-					if((TransStatus.TrackUse.TrackStatus&0x3c)!=0x00)//只有当轨道被上锁的时候才会出现已经上轨这种帧，避免出现已经上轨累计这种情况
+					printf("<事务ID：%llu>（12/14）已经接收到 %d 号小车已经下轨帧，下轨道\r\n",printfcount,tempNode->id.idBit.sendDeviceId	);
+					ACKSendFram(CAN2_CHANNEL,tempNode);//立刻回应，多主
+			   	printf("<事务ID：%llu>（13/14）已经对%d号小车下轨帧进行回应\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+					if((TransStatus.TrackUse.TrackStatus&0x3c)!=0x00&&alreadlydowntrack==0)//只有当轨道被上锁的时候才会出现已经轨这种帧，避免出现已经上轨累计这种情况
 					{
-						ACKSendFram(CAN2_CHANNEL,tempNode);//立刻回应，多主
-						printf("<事务ID：%llu>（13/14）已经对%d号小车下轨帧进行回应\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+						alreadlyuptrack=1;
+						printf("<事务ID：%llu>发送%d号小车已经下轨信号量\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
             OSSemPost(CarAlreadyDownSem);//解锁
 					}
 					else
 					{
-						printf("<事务ID：%llu>（ERR）收到%d号小车已经下轨帧，但不进行回应\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
+						printf("<事务ID：%llu>（ERR）收到%d号小车已经下轨帧，但不发送信号量\r\n",printfcount,tempNode->id.idBit.sendDeviceId);
 					}
         }
         break;

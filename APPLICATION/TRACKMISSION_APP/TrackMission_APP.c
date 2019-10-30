@@ -66,10 +66,9 @@ void TranPerMission_Task(void *pdata)
                 continue;//下面的函数不再执行
             }
 						printf("进入预动线程，预动到 %d 号轨道。\r\n",TempMissionNode->InitialPoint);
+					  TrackLockFunction(LockTrack,chooseTrack);//轨道锁//Num的高八位是定位时选择的动轨编号
             Num=Choose_TransLocate_Change(chooseTrack,TempMissionNode->InitialPoint);//调用转轨函数转换轨道
             printf("预动到 %d 号轨道成功！\r\n",TempMissionNode->InitialPoint);
-            TrackLockFunction(LockTrack,Num>>8);//轨道锁//Num的高八位是定位时选择的动轨编号
-
             Target=(u8)Num;//Num低八位是转换后对准的定轨编号
             if(TempMissionNode->InitialPoint==Target)//成功
             {
@@ -263,7 +262,8 @@ void CarApplyChange_Task(void *pdata)
             /*轨道转移到初始位置*函数返回值是动轨+定轨*/
             printf("<事务ID：%llu>（3/14）%d号转轨器开始转移到%d号轨道（起始轨道）!\r\n",printfcount,ThisTransitionNumber,TempMissionNode->InitialPoint);
 						//printf("The %d Transition starts to switch to the %d track!\r\n",ThisTransitionNumber,TempMissionNode->InitialPoint);
-            Num = Choose_TransLocate_Change(BestchoseMoving,TempMissionNode->InitialPoint);//调用转轨函数转换轨道，返回值是转换后的轨道号，用来判断轨道是否转换成功
+            TrackLockFunction(LockTrack,BestchoseMoving);//轨道锁
+						Num = Choose_TransLocate_Change(BestchoseMoving,TempMissionNode->InitialPoint);//调用转轨函数转换轨道，返回值是转换后的轨道号，用来判断轨道是否转换成功
             InitialTrackNum=(u8)Num;//对准的定轨号码
             if(InitialTrackNum == TempMissionNode->InitialPoint)//轨道已经转换到初始位置成功
             {
@@ -275,19 +275,19 @@ void CarApplyChange_Task(void *pdata)
                 TempFramup->canMsg.dataBuf[1]=TempMissionNode->TerminalPoint;//终点位置
                 TempFramup->nextMsg=NULL;
                 CAN_Post_Queue(CAN2_CHANNEL,TempFramup);//压入主动帧链表，发送通知小车上轨的帧，并在发送线程中等带对方的回应量
-                TrackLockFunction(LockTrack,TempMissionNode->InitialPoint);//轨道锁
 							  printf("<事务ID：%llu>（5/14）通知%d号小车上轨道！\r\n",printfcount,TempMissionNode->CarNum);
                 nowcarnum = (u8 *)OSMboxPend(CarAlreadyUpMbox,0,&sserr);//等待小车已经上轨信号邮箱
-							while(*nowcarnum!=TempMissionNode->CarNum)//如果接收到的不是此流程的小车号码，那就认为此处有问题，一直接受
-							{
-									nowcarnum = (u8 *)OSMboxPend(CarAlreadyUpMbox,0,&sserr);//等待小车已经上轨信号邮箱
-							}
+//							while(*nowcarnum!=TempMissionNode->CarNum)//如果接收到的不是此流程的小车号码，那就认为此处有问题，一直接受
+//							{
+//									nowcarnum = (u8 *)OSMboxPend(CarAlreadyUpMbox,0,&sserr);//等待小车已经上轨信号邮箱
+//							}
 							printf("<事务ID：%llu>（8/14）%d号小车上轨道已经完成！\r\n",printfcount,TempMissionNode->CarNum);
-              TrackLockFunction(UnlockTrack,TempMissionNode->InitialPoint);//轨道锁解锁
+              TrackLockFunction(UnlockTrack,BestchoseMoving);//轨道锁解锁
             }
             /*转移到初始位置并且上轨流程完成*/
             /*轨道转移到目标位置*/
             //TrackLockFunction(LockTrack,TempMissionNode->TerminalPoint);//轨道锁加锁
+					  TrackLockFunction(LockTrack,BestchoseMoving);//轨道锁
 						printf("<事务ID：%llu>（9/14）%d号转轨器开始转移到%d号轨道!（终点轨道）\r\n",printfcount,ThisTransitionNumber,TempMissionNode->TerminalPoint);
             Num = Choose_TransLocate_Change(BestchoseMoving,TempMissionNode->TerminalPoint);//调用转轨函数转换轨道，返回值是转换后的轨道号，用来判断轨道是否转换成功
             TerminalTrackNum=(u8)Num;
@@ -300,7 +300,6 @@ void CarApplyChange_Task(void *pdata)
                 TempFramdown->canMsg.dataBuf[0]=TempMissionNode->InitialPoint;//起始位
                 TempFramdown->nextMsg=NULL;
                 CAN_Post_Queue(CAN2_CHANNEL,TempFramdown);//压入主动帧链表，发送通知小车下轨的帧，并在发送线程中等带对方的回应量
-                TrackLockFunction(LockTrack,TempMissionNode->TerminalPoint);//轨道锁
 							/*小车刚刚下轨道就给区域控制器发送小车已经下轨状态通知帧*/
 							//组包
 							  CarIsDownTrack = (CAN_SEND_FRAME *)mymalloc(SRAMIN,sizeof(CAN_SEND_FRAME));//通知区域控制器小车已经下轨道的帧
@@ -313,29 +312,32 @@ void CarApplyChange_Task(void *pdata)
 							  CAN_Post_Queue(CAN2_CHANNEL,CarIsDownTrack);//给区域控制器发
 							/*会在发送线程中等待区域控制器的回应*/
 							printf("<事务ID：%llu>（11/14）通知%d号小车下轨\r\n",printfcount,TempMissionNode->CarNum);
-                OSSemPend(CarAlreadyDownSem,3000,&sserr);//等待小车已经下轨信号量
+								TrackLockFunction(LockTrack,BestchoseMoving);//轨道锁
+                OSSemPend(CarAlreadyDownSem,5000,&sserr);//等待小车已经下轨信号量
 						if(sserr==OS_ERR_NONE)
 						{
 								printf("<事务ID：%llu>（14/14）%d号小车下轨成功，%d号小车流程结束\r\n\r\n\r\n",printfcount,TempMissionNode->CarNum,TempMissionNode->CarNum);
 						}
 						else
 						{
-							printf("<事务ID：%llu>（ERR）The %d car did not gine fram down the track, unlocked over time.\r\n\r\n\r\n",printfcount,TempMissionNode->CarNum);
+							printf("超时\r\n");
 						}
+						
 							/*此处应该有跟域要小车位置的帧*/
-                TrackLockFunction(UnlockTrack,TempMissionNode->TerminalPoint);//轨道锁
+                TrackLockFunction(UnlockTrack,BestchoseMoving);//轨道锁
                 TransStatus.TrackUse.Usebit.Monopolize=T_No;//轨道独享位释放
                 TransStatus.TrackUse.Usebit.ExeCommands=T_No;//正在执行命令释放
             }
-
+            alreadlyuptrack=0;//解锁已经上轨
+						alreadlydowntrack=0;
             OS_ENTER_CRITICAL();
 						myfree(SRAMIN,CarIsDownTrack);
             myfree(SRAMIN,TempFramdown);
             myfree(SRAMIN,TempFramup);
             myfree(SRAMIN,TempMissionNode);
+						myfree(SRAMIN,nowcarnum);
             OS_EXIT_CRITICAL();
-					  alreadlyuptrack=0;//解锁已经上轨
-            LastFramFlag=0;
+					  
 
         }
         else//flag==1，即是可以直接通过的任务
@@ -344,7 +346,7 @@ void CarApplyChange_Task(void *pdata)
             /*轨道转移到目标位置*/
             //TrackLockFunction(LockTrack,TempMissionNode->TerminalPoint);//轨道锁加锁
             Num = Choose_TransLocate_Change(BestchoseMoving,TempMissionNode->TerminalPoint);//调用转轨函数转换轨道，返回值是转换后的轨道号，用来判断轨道是否转换成功
-            TrackLockFunction(LockTrack,Num>>8);//轨道锁上锁，这条动轨已经有车通过
+            TrackLockFunction(LockTrack,BestchoseMoving);//轨道锁上锁，这条动轨已经有车通过
             TerminalTrackNum=(u8)Num;
             if(TerminalTrackNum==TempMissionNode->TerminalPoint)//轨道变换已经成功
             {
@@ -360,7 +362,7 @@ void CarApplyChange_Task(void *pdata)
 							  
 							 
 							
-                TrackLockFunction(UnlockTrack,Num>>8);//解锁轨道锁
+                TrackLockFunction(UnlockTrack,BestchoseMoving);//解锁轨道锁
                 TransStatus.TrackUse.Usebit.Monopolize=T_No;//轨道独享位释放
                 TransStatus.TrackUse.Usebit.ExeCommands=T_No;//正在执行命令释放
             }

@@ -32,7 +32,7 @@ T_Trans_Statistics TransStatistics= {
 };//转轨器统计结构
 
 u8 alreadlyuptrack=0;
-
+u8 alreadlydowntrack=0;
 INT8U W25QXXSendBuff[130];//W25QXX的发送缓存
 INT8U W25QXXReceiveBuff[130];//接收缓存
 volatile  u8 FindZeroGlob=0;//找零是否触发零点标志

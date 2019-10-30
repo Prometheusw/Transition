@@ -26,6 +26,7 @@ extern volatile u8 Now_direction;//当前方向
 extern T_Trans_Statistics TransStatistics;//转轨器统计结构
 extern u8 EquipmentType;//设备类型号码；
 extern CAN_DATA_FRAME *RTRbuf;
+extern u8 alreadlydowntrack;
 
 extern u8 LastFramFlag;
 extern u8 ThresholdValue;//定位任务执行的次数阈值，当一定次数没有找零，阈值到达极限，强制校零

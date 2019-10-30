@@ -628,13 +628,13 @@ void FindZeroFuction(u8 mode)
             TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
             break;//跳出执行，停止
         }
-        /*判断找零开关是否有效*/
-        if(TransStatus.ErrorCode==MotorOverCurrent)//如果这时候发生电机过流现象,说明卡在最后了，说明教令开关失效
-        {
-            TransStatus.ErrorCode=CantFindZero;//错误类型细分为找零失效
-            TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
-            return;
-        }
+//        /*判断找零开关是否有效*/
+//        if(TransStatus.ErrorCode==MotorOverCurrent)//如果这时候发生电机过流现象,说明卡在最后了，说明教令开关失效
+//        {
+//            TransStatus.ErrorCode=CantFindZero;//错误类型细分为找零失效
+//            TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
+//            return;
+//        }
     }
     // TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
 
@@ -663,12 +663,12 @@ void FindZeroFuction(u8 mode)
             }
             //TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,ENABLE);
             /*判断找零开关是否有效*/
-            if(TransStatus.ErrorCode==MotorOverCurrent)//如果这时候发生电机过流现象，说明教令开关失效
-            {
-                TransStatus.ErrorCode=CantFindZero;//错误类型细分为找零失效
-                TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
-                return;
-            }
+//            if(TransStatus.ErrorCode==MotorOverCurrent)//如果这时候发生电机过流现象，说明教令开关失效
+//            {
+//                TransStatus.ErrorCode=CantFindZero;//错误类型细分为找零失效
+//                TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
+//                return;
+//            }
         }
         TIM_ITConfig(TIM3,TIM_IT_CC3|TIM_IT_CC4,DISABLE);
         OSSemPend(arrivePosSem,300,&oserr);
@@ -679,7 +679,7 @@ void FindZeroFuction(u8 mode)
     if(EnableStopButton==T_Yes)
     {
         TransStatus.DockedNumber=0xffff;//改变正好对准的轨道号(急停情况下未知位置)
-        TransStatus.TrackUse.TrackStatus=0x01;
+        TransStatus.TrackUse.TrackStatus|=0x01;//有bug
 
 
         TransStatus.EncoderCount=0;
@@ -690,7 +690,7 @@ void FindZeroFuction(u8 mode)
         TransStatus.DockedNumber=0xfffe;//-1
         TransStatus.EncoderCount=0;
         TransStatus.ErrorCode=0;
-        TransStatus.TrackUse.TrackStatus=0x01;
+        TransStatus.TrackUse.TrackStatus|=0x01;//有bug
         TransStatus.WarningCode=0;
     }
     if(mode==Need_Back&&EnableStopButton!=T_Yes)
